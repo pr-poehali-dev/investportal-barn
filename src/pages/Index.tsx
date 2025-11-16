@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -8,6 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
+  const navigate = useNavigate();
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -146,7 +148,7 @@ const Index = () => {
               Полное сопровождение инвестиционных проектов на всех этапах. Удобный доступ к площадкам, документам и мерам поддержки.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="hover:scale-105 transition-transform shadow-lg">
+              <Button size="lg" variant="secondary" className="hover:scale-105 transition-transform shadow-lg" onClick={() => navigate('/map')}>
                 <Icon name="Map" className="mr-2" size={20} />
                 Интерактивная карта
               </Button>
@@ -218,7 +220,7 @@ const Index = () => {
                       <Icon name="DollarSign" size={18} />
                       <span>Инвестиции: {project.investment}</span>
                     </div>
-                    <Button className="w-full mt-4 hover:scale-105 transition-transform">
+                    <Button className="w-full mt-4 hover:scale-105 transition-transform" onClick={() => navigate(`/project/${project.id}`)}>
                       Подробнее
                       <Icon name="ArrowRight" className="ml-2" size={18} />
                     </Button>
@@ -273,7 +275,7 @@ const Index = () => {
                       </div>
                       <div className="flex flex-col gap-2">
                         <Badge className="bg-green-500">Доступна</Badge>
-                        <Button variant="outline" className="hover:scale-105 transition-transform">
+                        <Button variant="outline" className="hover:scale-105 transition-transform" onClick={() => navigate('/map')}>
                           <Icon name="Eye" className="mr-2" size={18} />
                           Смотреть на карте
                         </Button>
